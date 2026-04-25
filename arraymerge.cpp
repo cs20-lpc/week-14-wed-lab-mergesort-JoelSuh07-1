@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void merge(int arr[], int left, int mid, int right)
@@ -7,6 +8,8 @@ void merge(int arr[], int left, int mid, int right)
     // Create temporary arrays
     // Copy data
     // Merge sorted halves back into arr
+
+    int leftArr[arr], rightArr[];
 }
 
 void mergeSort(int arr[], int left, int right)
@@ -18,6 +21,14 @@ void mergeSort(int arr[], int left, int right)
         // Recursively sort left half
         // Recursively sort right half
         // Merge both halves
+
+        int mid = left + (right - 1) / 2;
+        
+        mergeSort(arr, left, mid); //recursion for sorting left half
+
+        mergeSort(arr, mid + 1, right); //recursion for sorting right half
+
+        merge(arr, left, mid, right); //merging sorted halves
     }
 }
 
