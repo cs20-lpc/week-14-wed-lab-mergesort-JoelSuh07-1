@@ -9,7 +9,34 @@ void merge(int arr[], int left, int mid, int right)
     // Copy data
     // Merge sorted halves back into arr
 
-    int leftArr[arr], rightArr[];
+    int leftSize = mid - left + 1;
+    int rightSize = right - mid;
+
+    //create temporary array
+    vector<int> leftArr(leftSize), rightArr(rightSize);
+
+    //copies data into the sub arrays
+    for (int i = 0; i < mid; ++i) leftArr[i] = arr[left + i];
+    for (int j = mid + 1; j < right; ++j) rightArr[j] = arr[mid + j + 1];
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < leftSize && j < rightSize){
+    if (leftArr[i] <= rightArr[j]){
+        arr[k] = leftArr[i];
+        ++i;
+    } else {
+        arr[k] = rightArr[j];
+        ++j;
+    }
+    ++k;
+}
+
+    //remaining values get dumped into the end of the sorted array
+    while (i < leftSize) arr[k++] = leftArr[i++];
+    while (j < rightSize) arr[k++] = rightArr[j++];
 }
 
 void mergeSort(int arr[], int left, int right)
