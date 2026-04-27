@@ -64,13 +64,18 @@ void splitList(Node* source, Node*& front, Node*& back)
     // Use slow/fast pointer method
     // Split list into two halves
     Node* slow = source;
-    Node* fast = source;
-    while(source!=nullptr){
-        slow->next;
-        fast->next->next;
+    Node* fast = source->next;
+
+    while(fast!=nullptr){
+        fast = fast->next;
+            if (fast != nullptr){
+                slow->next;
+                fast->next->next;
     }
-    Node* mid = slow;
-    mid->next = nullptr;
+    
+    front = source;
+    back = slow->next;
+    slow->next = nullptr;
 
 }
 
@@ -87,6 +92,12 @@ void mergeSort(Node*& head)
     // Recursively sort both halves
     // Merge sorted lists
 
+    splitList(head, a, b);
+
+    mergeSort(a);
+    mergeSort(b);
+
+    head = sortedMerge(a, b);
     
 }
 
