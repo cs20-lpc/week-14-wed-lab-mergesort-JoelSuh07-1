@@ -49,7 +49,7 @@ void mergeSort(int arr[], int left, int right)
         // Recursively sort right half
         // Merge both halves
 
-        int mid = left + (right - 1) / 2;
+        int mid = left + (right - left) / 2;
         
         mergeSort(arr, left, mid); //recursion for sorting left half
 
