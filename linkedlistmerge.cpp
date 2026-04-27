@@ -72,6 +72,7 @@ void splitList(Node* source, Node*& front, Node*& back)
                 slow->next;
                 fast->next->next;
     }
+}
     
     front = source;
     back = slow->next;
